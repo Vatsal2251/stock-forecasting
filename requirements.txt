@@ -1,3 +1,4 @@
+fbprophet
 keras
 numpy
 pandas
