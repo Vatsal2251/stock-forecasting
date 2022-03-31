@@ -5,7 +5,7 @@ from datetime import date
 import yfinance as yf
 from plotly import graph_objs as go
 from plotly.subplots import make_subplots
-from fbprophet.plot import plot_plotly
+from prophet.plot import plot_plotly
 import numpy as np
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM
