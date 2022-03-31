@@ -1,5 +1,5 @@
 pystan
-conda install -c conda-forge fbprophet
+fbprophet
 keras
 numpy
 pandas
