@@ -1,5 +1,5 @@
-stan
-fbprophet
+pystan
+conda install -c conda-forge fbprophet
 keras
 numpy
 pandas
