@@ -1,11 +1,11 @@
 import streamlit as st
-#from fbprophet import Prophet
+from fbprophet import Prophet
 import pandas as pd
 from datetime import date
 import yfinance as yf
 from plotly import graph_objs as go
 from plotly.subplots import make_subplots
-#from fbprophet.plot import plot_plotly
+from fbprophet.plot import plot_plotly
 import numpy as np
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM
@@ -84,27 +84,27 @@ if stocks != "":
         if chart == 'Candlestic Chart':
             plot_real_data_candlestic()
         
-        ##fbprophet:
-#         st.cache(allow_output_mutation=True)
-#         def fbprophet_model():
-#             train_data = data.drop(['Open','High','Low','Adj Close','Volume'],axis=1)
-#             train_data = train_data.rename( columns={"Date":"ds", "Close":"y"})
-#             m = Prophet()
-#             m.fit(train_data)
-#             return m
+        #fbprophet:
+        st.cache(allow_output_mutation=True)
+        def fbprophet_model():
+            train_data = data.drop(['Open','High','Low','Adj Close','Volume'],axis=1)
+            train_data = train_data.rename( columns={"Date":"ds", "Close":"y"})
+            m = Prophet()
+            m.fit(train_data)
+            return m
 
 
-#         def fbprophet_impl():
-#             m = fbprophet_model()
-#             period = 120
-#             future = m.make_future_dataframe(periods=period)
-#             forecast = m.predict(future)
-#             fig_fb = plot_plotly(m,forecast)
-#             st.subheader("Prediction for 1 year")
-#             st.write(forecast.tail())
-#             st.plotly_chart(fig_fb)
-#             fig_comp = m.plot_components(forecast)
-#             st.write(fig_comp)
+        def fbprophet_impl():
+            m = fbprophet_model()
+            period = 120
+            future = m.make_future_dataframe(periods=period)
+            forecast = m.predict(future)
+            fig_fb = plot_plotly(m,forecast)
+            st.subheader("Prediction for 1 year")
+            st.write(forecast.tail())
+            st.plotly_chart(fig_fb)
+            fig_comp = m.plot_components(forecast)
+            st.write(fig_comp)
 
         def lstm_multi_model(trainX,trainY):
             model = Sequential()
@@ -179,9 +179,6 @@ if stocks != "":
         if model == 'LSTM Multi Variable':
             st.subheader("Prediction using LSTM Multi Variable Model:")
             lstm_multi_impl()
-#         if model == 'FB Prophet':
-#             st.subheader("Prediction using FB Prophet Model:")
-#             fbprophet_impl()
-        
-
-          
+        if model == 'FB Prophet':
+            st.subheader("Prediction using FB Prophet Model:")
+            fbprophet_impl()
