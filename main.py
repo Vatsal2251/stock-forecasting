@@ -34,7 +34,7 @@ stocks = st.text_input("Enter Stock Name")
 def load_dataset(filename):
     df = pd.read_json(filename)
     return df
-df = load_dataset('/home/vatsal/Desktop/orena project/stocks.json')
+df = load_dataset('https://raw.githubusercontent.com/Vatsal2251/stock-forecasting/main/stocks.json')
     
     
 if stocks != "":
