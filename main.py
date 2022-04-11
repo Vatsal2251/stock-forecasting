@@ -177,7 +177,6 @@ if stocks != "":
                     incr.append(df_forecast['Open'][i]+diff)
 
                 df_inc = pd.DataFrame(incr)
-                # df_inc['Date']=pd.to_datetime(df_inc['Date'])
                 df_incr = pd.concat([df_forecast['Date'],df_inc],axis=1)
 
                 fig_lstm = go.Figure()
